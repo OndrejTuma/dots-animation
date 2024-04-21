@@ -1,15 +1,21 @@
-# 🚀 Welcome to your new awesome project!
+# Animated dots
 
-This project has been created using **webpack-cli**, you can now run
+This is a pet project utilizing plan canvas API and typescript to create connected bouncing dots animation.
+
+![Preview](./preview.png)
+
+
+# Usage
+
+Open webpack dev server using
+
+```
+npm run serve
+```
+
+or create a static build in a `/dist` folder
 
 ```
 npm run build
 ```
 
-or
-
-```
-yarn build
-```
-
-to bundle your application

@@ -26,6 +26,7 @@ function manifestBoard() {
     parseInt(
       (document.getElementById('maxRadius') as HTMLInputElement).value
     ) ?? 0
+    
   const dots = generateDots(dotsCount, canvas)
   const connector = new Connector(dots, maxRadius)
 
