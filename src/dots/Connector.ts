@@ -21,26 +21,43 @@ export class Connector {
   _getLines(dot: Dot): Line[] {
     const [x, y] = dot.getPosition()
 
-    return this.dots
-      .filter((candidate) => {
-        const [candidateX, candidateY] = candidate.getPosition()
+    return (
+      this.dots
+        // Find all Dots in maxRadius
+        .filter((candidate) => {
+          const [candidateX, candidateY] = candidate.getPosition()
 
-        const distance = Math.sqrt(
-          Math.pow(Math.abs(candidateX - x), 2) +
-            Math.pow(Math.abs(candidateY - y), 2)
-        )
+          const distance = Math.sqrt(
+            Math.pow(Math.abs(candidateX - x), 2) +
+              Math.pow(Math.abs(candidateY - y), 2)
+          )
 
-        return distance <= this.maxRadius
-      })
-      .map((neighbor) => {
-        const [neighborX, neighborY] = neighbor.getPosition()
+          return distance !== 0 && distance <= this.maxRadius
+        })
+        // Filter those that already have a Line connection
+        .filter((neighbor) => {
+          return !neighbor.getLines().find((line) => {
+            const [, [lineX, lineY]] = line.getCoordinates()
 
-        const distance = Math.sqrt(
-          Math.pow(Math.abs(neighborX - x), 2) +
-            Math.pow(Math.abs(neighborY - y), 2)
-        )
+            return lineX === x && lineY === y
+          })
+        })
+        .map((neighbor) => {
+          const [neighborX, neighborY] = neighbor.getPosition()
 
-        return new Line(x, y, neighborX, neighborY, distance / this.maxRadius)
-      })
+          const distance = Math.sqrt(
+            Math.pow(Math.abs(neighborX - x), 2) +
+              Math.pow(Math.abs(neighborY - y), 2)
+          )
+
+          return new Line(
+            x,
+            y,
+            neighborX,
+            neighborY,
+            1 - distance / this.maxRadius
+          )
+        })
+    )
   }
 }

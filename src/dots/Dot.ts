@@ -29,6 +29,10 @@ export class Dot implements Drawable {
     this.lines = []
   }
 
+  getLines() {
+    return this.lines
+  }
+  
   getPosition() {
     return [this.x, this.y]
   }

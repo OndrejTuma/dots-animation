@@ -8,14 +8,27 @@ export class Line implements Drawable {
   private toY: number
   private opacity: number
 
-  constructor(fromX: number, fromY: number, toX: number, toY: number, opacity: number = 1) {
+  constructor(
+    fromX: number,
+    fromY: number,
+    toX: number,
+    toY: number,
+    opacity: number = 1
+  ) {
     this.fromX = fromX
     this.fromY = fromY
     this.toX = toX
     this.toY = toY
     this.opacity = opacity
   }
-  
+
+  getCoordinates() {
+    return [
+      [this.fromX, this.fromY],
+      [this.toX, this.toY],
+    ]
+  }
+
   manifest(board: Board) {
     const ctx = board.getCtx()
 
