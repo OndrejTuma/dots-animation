@@ -1,3 +1,4 @@
+import { Connector } from './Connector'
 import { Dot } from './Dot'
 
 export class Board {
@@ -6,6 +7,7 @@ export class Board {
   private height: number
   private dots: Dot[]
   private animationInterval: NodeJS.Timeout
+  private connector: Connector
 
   constructor(canvas: HTMLCanvasElement) {
     this.ctx = canvas.getContext('2d')
@@ -23,8 +25,11 @@ export class Board {
     }
   }
 
-  populate(dots: Dot[]) {
+  populate(dots: Dot[], connector?: Connector) {
     this.dots = dots
+    this.connector = connector
+
+    this.connector?.connect()
     this.dots.forEach((dot) => dot.manifest(this))
   }
 
@@ -40,6 +45,7 @@ export class Board {
 
   _redraw() {
     this.ctx.clearRect(0, 0, this.width, this.height)
+    this.connector?.connect()
     this.dots.forEach((dot) => dot.move(this))
   }
 }

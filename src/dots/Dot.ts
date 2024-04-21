@@ -1,13 +1,16 @@
 import { Board } from './Board'
+import { Line } from './Line'
 import { getMinimalPi, pruneRad } from './helpers'
+import { Drawable } from './types'
 
-export class Dot {
+export class Dot implements Drawable {
   private x: number
   private y: number
   private radius: number
   private opacity: number
   private direction: number
   private velocity: number
+  private lines: Line[]
 
   constructor(
     x: number,
@@ -23,6 +26,11 @@ export class Dot {
     this.direction = direction
     this.opacity = opacity
     this.velocity = velocity
+    this.lines = []
+  }
+
+  getPosition() {
+    return [this.x, this.y]
   }
 
   manifest(board: Board) {
@@ -32,6 +40,8 @@ export class Dot {
     ctx.globalAlpha = this.opacity
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
     ctx.fill()
+
+    this.lines.forEach((line) => line.manifest(board))
   }
 
   move(board: Board) {
@@ -51,5 +61,9 @@ export class Dot {
     }
 
     this.manifest(board)
+  }
+
+  setLines(lines: Line[]) {
+    this.lines = lines
   }
 }

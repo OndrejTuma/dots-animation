@@ -1,11 +1,13 @@
 import { Board } from './dots'
+import { Connector } from './dots/Connector'
 import { generateDots } from './dots/helpers'
 
 const canvas = document.getElementById('canvas') as HTMLCanvasElement
 const dots = generateDots(50, canvas)
+const connector = new Connector(dots, 100)
 
 const board = new Board(canvas)
-board.populate(dots)
+board.populate(dots, connector)
 
 document.body.addEventListener('keyup', (e) => {
   switch (e.code) {
