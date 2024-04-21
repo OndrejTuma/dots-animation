@@ -11,37 +11,107 @@
       height="600"
       style="border: 5px solid"
     ></canvas>
-    <form>
-      <fieldset>
-        <legend>Controls</legend>
-        <div>
-          <label for="dots">Dots</label>
-          <input id="dots" name="dots" value="100" />
-        </div>
-        <div>
-          <label for="maxRadius">Max line radius</label>
-          <input id="maxRadius" name="maxRadius" value="100" />
-        </div>
-      </fieldset>
+    <form id="form" method="post">
       <fieldset>
         <button type="button" id="start">Start</button>
         <button type="button" id="stop">Stop</button>
       </fieldset>
+      <fieldset>
+        <legend>Controls</legend>
+        <div>
+          <label for="dots">Dots</label>
+          <input
+            id="dots"
+            name="dots"
+            value="100"
+            type="number"
+            min="1"
+            max="1000"
+          />
+        </div>
+        <div>
+          <div>
+            <label for="neighborsRadius">Max radius for connecting dots</label>
+            <input
+              id="neighborsRadius"
+              name="neighborsRadius"
+              value="100"
+              type="number"
+              min="0"
+              max="1000"
+            />
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Dot configuration</legend>
+        <div>
+          <label for="minRadius">Min radius</label>
+          <input
+            id="minRadius"
+            name="minRadius"
+            value="3"
+            type="number"
+            min="1"
+            max="100"
+          />
+        </div>
+        <div>
+          <label for="maxRadius">Max radius</label>
+          <input
+            id="maxRadius"
+            name="maxRadius"
+            value="7"
+            type="number"
+            min="1"
+            max="100"
+          />
+        </div>
+        <div>
+          <label for="minOpacity">Min opacity</label>
+          <input
+            id="minOpacity"
+            name="minOpacity"
+            value=".3"
+            type="number"
+            min="0"
+            max="1"
+          />
+        </div>
+        <div>
+          <label for="maxOpacity">Max opacity</label>
+          <input
+            id="maxOpacity"
+            name="maxOpacity"
+            value="1"
+            type="number"
+            min="0"
+            max="1"
+          />
+        </div>
+        <div>
+          <label for="minVelocity">Min velocity</label>
+          <input
+            id="minVelocity"
+            name="minVelocity"
+            value="1"
+            type="number"
+            min="1"
+            max="10"
+          />
+        </div>
+        <div>
+          <label for="maxVelocity">Max velocity</label>
+          <input
+            id="maxVelocity"
+            name="maxVelocity"
+            value="3"
+            type="number"
+            min="1"
+            max="10"
+          />
+        </div>
+      </fieldset>
     </form>
   </body>
-
-  <!-- <script>
-        if ("serviceWorker" in navigator) {
-            window.addEventListener("load", () => {
-                navigator.serviceWorker
-                    .register("service-worker.js")
-                    .then((registration) => {
-                        console.log("Service Worker registered: ", registration);
-                    })
-                    .catch((registrationError) => {
-                        console.error("Service Worker registration failed: ", registrationError);
-                    });
-            });
-        }
-    </script> -->
 </html>
