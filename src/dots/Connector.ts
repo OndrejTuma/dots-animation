@@ -42,6 +42,7 @@ export class Connector {
             return lineX === x && lineY === y
           })
         })
+        // Create Lines for remaining neighbors
         .map((neighbor) => {
           const [neighborX, neighborY] = neighbor.getPosition()
 

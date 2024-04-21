@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Webpack App</title>
-    </head>
-    <body>
-        <canvas id="canvas" width="800" height="600" style="border: 5px solid;"></canvas>
-    </body>
-    
-    <!-- <script>
+  <head>
+    <meta charset="utf-8" />
+    <title>Webpack App</title>
+  </head>
+  <body>
+    <canvas
+      id="canvas"
+      width="800"
+      height="600"
+      style="border: 5px solid"
+    ></canvas>
+    <form>
+      <fieldset>
+        <legend>Controls</legend>
+        <div>
+          <label for="dots">Dots</label>
+          <input id="dots" name="dots" value="100" />
+        </div>
+        <div>
+          <label for="maxRadius">Max line radius</label>
+          <input id="maxRadius" name="maxRadius" value="100" />
+        </div>
+      </fieldset>
+      <fieldset>
+        <button type="button" id="start">Start</button>
+        <button type="button" id="stop">Stop</button>
+      </fieldset>
+    </form>
+  </body>
+
+  <!-- <script>
         if ("serviceWorker" in navigator) {
             window.addEventListener("load", () => {
                 navigator.serviceWorker

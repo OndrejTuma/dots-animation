@@ -34,6 +34,8 @@ export class Board {
   }
 
   start() {
+    this.stop()
+
     this.animationInterval = setInterval(
       () => window.requestAnimationFrame(this._redraw.bind(this)),
       20
