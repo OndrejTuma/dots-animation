@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Canvas Dots Animation</title>
+<style>
+    body { display: flex; flex-direction: column; align-items: center; margin-top: 20px; }
+    #controls { margin-bottom: 10px; }
+</style>
+</head>
+<body style="margin: 0;">
+<div id="controls">
+    <button onclick="startAnimation()">Start</button>
+    <button onclick="stopAnimation()">Stop</button>
+    <label>Dots Count: <input type="number" id="dotsCount" min="10" max="200" value="150"></label>
+    <label>X Velocity: <input type="range" id="xVel" min="-5" max="5" value="1"></label>
+    <label>Y Velocity: <input type="range" id="yVel" min="-5" max="5" value="1"></label>
+    <label>Radius: <input type="range" id="radius" min="5" max="20" value="5"></label>
+    <label>Line Distance: <input type="range" id="lineDistance" min="50" max="300" value="150"></label>
+</div>
+<canvas id="canvas"></canvas>
+<script src="app.js"></script>
+</body>
+</html>
